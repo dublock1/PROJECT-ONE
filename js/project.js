@@ -1,4 +1,26 @@
 $(document).ready(function() {
+    
+    // Create Letters
+    var letters = ("abcdefghijklmnopqrstuvwxyz").toUpperCase();
+    var currentWord = "Eagles";
+    var lettersGuess =[];
+    var letterChoice = createLetters(letters);
+
+    // Create buttons for each letter
+    $.each(letterChoice, function(index,value) {
+        var button = $('<button class="letters">' +value.name + "</button>");
+        $('#keyboard').append(button);
+    });
+
+    function createLetters(word) {
+        return word.split("").map(function(letter) {
+            return {
+                name: letter,
+                chosen: false
+            };
+        });
+    };
+
 function draw(){
 var hang = document.getElementById("hangman").getContext('2d');
 hang.fillStyle = "white";
@@ -58,4 +80,4 @@ hang.beginPath(); // noose
     hang.stroke();
 }
 draw();
-}
+})
