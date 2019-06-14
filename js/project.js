@@ -1,8 +1,12 @@
 $(document).ready(function() {
-    
+// create words
+const words = ["JERSEY", "EAGLES", "PHILLY"];
+
+// choose word
+
     // Create Letters
     var letters = ("abcdefghijklmnopqrstuvwxyz").toUpperCase();
-    var currentWord = "Eagles";
+    var currentWord = "";
     var lettersGuess =[];
     var letterChoice = createLetters(letters);
 
