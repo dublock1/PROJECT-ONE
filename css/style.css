@@ -44,3 +44,10 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
+
+.letter-box {
+    border-bottom: 2px solid black;
+    display: inline-block;
+    width: 50px;
+    margin: 10px;
+}
