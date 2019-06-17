@@ -9,7 +9,9 @@ console.log(pickAWord);
 console.log(wordToBeGuessed);
     // Create Letters
     var currentWord = "";
-    var lettersGuess =[];
+    var lettersGuess = 6;
+    var wrongGuess= [];
+    var usersGuess= [];
     // create buttons for my letters
     for(let i = 65; i <= 90; i++) {
         // console.log(String.fromCharCode(i))
@@ -23,7 +25,8 @@ console.log(wordToBeGuessed);
         console.log(wordToBeGuessed[i])
         let div = $(`<div class="letter-box" data-letter="${wordToBeGuessed[i]}"></div>`);
         $('#underscores').append(div)
-    }
+               
+}
 
     let test = $(`[data-letter="${lettersGuess}"]`)
     test.text(lettersGuess)
@@ -38,18 +41,40 @@ console.log(wordToBeGuessed);
             evt.target.style.backgroundColor = "purple";
         console.log(evt.target.innerHTML) 
         // Compare letter clicked to current word to be guessed
-        for (let i = 0; i < wordToBeGuessed.length; i++) {
-            if (wordToBeGuessed[i] === lettersGuess) {
-                found = true;
-                break;
-            }
+        console.log(wordToBeGuessed.indexOf('#keyboard'))
+        // if letter clicked is in Wordtobeguessed       
+        if(wordToBeGuessed.indexOf(evt.target.innerHTML) > -1) {
+            // if (evt.getAttribute(`data-letter`) === wordToBeGuessed) {
+           let letterBox = document.querySelectorAll('.letter-box')
+           letterBox.forEach(letter => {
+               // push to underscores
+               if (letter.getAttribute("data-letter") === evt.target.innerHTML) {
+                   letter.innerHTML = letter.getAttribute('data-letter')
+                   // if no more empty divs
+                   // alert "you win"
+               }
+           })
+            console.log(true);
+        } else {
+        console.log(false);
+        var wrong = document.getElementById('incorrectGuess');
+        
+        wrongGuess.push(evt.target.innerHTML)
+       
+        wrong.innerHTML = wrongGuess
+        console.log(wrongGuess)
+        var totalGuesses = document.getElementById('guesses');
+        totalGuesses.innerHTML = lettersGuess;
+        console.log(lettersGuess)
+        }
+        if (wrongGuess.length === lettersGuess){
+            alert("you lose");
         }
     })
+    for(let i = 0; i < wordToBeGuessed.length; i++){
+        // if wordToBeGuessed[i] === 
+    }
     // disable button
-    // if letter clicked is in Wordtobeguessed
-        // push to underscores
-        // if no more empty divs
-            // alert "you win"
     // else
         // push to incorrect
         // if amount incorrect === 6 
