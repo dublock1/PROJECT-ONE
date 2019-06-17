@@ -1,29 +1,62 @@
 $(document).ready(function() {
 // create words
-const words = ["JERSEY", "EAGLES", "PHILLY"];
+const phrase = ["JERSEY", "EAGLES", "PHILLY"];
 
 // choose word
-
+var pickAWord = Math.floor(Math.random() * phrase.length);
+var wordToBeGuessed = phrase[pickAWord];
+console.log(pickAWord);
+console.log(wordToBeGuessed);
     // Create Letters
-    var letters = ("abcdefghijklmnopqrstuvwxyz").toUpperCase();
     var currentWord = "";
     var lettersGuess =[];
-    var letterChoice = createLetters(letters);
+    // create buttons for my letters
+    for(let i = 65; i <= 90; i++) {
+        // console.log(String.fromCharCode(i))
+        var button = $('<button class="letters">' + (String.fromCharCode(i)) + "</button>");
+        $('#keyboard').append(button)
+    }
+    // make underscores that will be same length as my words hopefully
+    
+    var phraseUnderscores = wordToBeGuessed.length
+    for(let i = 0; i < phraseUnderscores; i++) {
+        console.log(wordToBeGuessed[i])
+        let div = $(`<div class="letter-box" data-letter="${wordToBeGuessed[i]}"></div>`);
+        $('#underscores').append(div)
+    }
 
-    // Create buttons for each letter
-    $.each(letterChoice, function(index,value) {
-        var button = $('<button class="letters">' +value.name + "</button>");
-        $('#keyboard').append(button);
-    });
+    let test = $(`[data-letter="${lettersGuess}"]`)
+    test.text(lettersGuess)
+    console.log(lettersGuess)
 
-    function createLetters(word) {
-        return word.split("").map(function(letter) {
-            return {
-                name: letter,
-                chosen: false
-            };
-        });
-    };
+    // let letterClickedOn = (("#keyboard") + (wordToBeGuessed)) 
+    // console.log(letterClickedOn)
+
+    
+        // When user clicks button
+        $("#keyboard").click(function(evt){
+            evt.target.style.backgroundColor = "purple";
+        console.log(evt.target.innerHTML) 
+        // Compare letter clicked to current word to be guessed
+        for (let i = 0; i < wordToBeGuessed.length; i++) {
+            if (wordToBeGuessed[i] === lettersGuess) {
+                found = true;
+                break;
+            }
+        }
+    })
+    // disable button
+    // if letter clicked is in Wordtobeguessed
+        // push to underscores
+        // if no more empty divs
+            // alert "you win"
+    // else
+        // push to incorrect
+        // if amount incorrect === 6 
+            // alert "you lose"
+    
+    
+    
 
 function draw(){
 var hang = document.getElementById("hangman").getContext('2d');
