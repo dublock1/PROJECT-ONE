@@ -8,10 +8,8 @@ var wordToBeGuessed = phrase[pickAWord];
 console.log(pickAWord);
 console.log(wordToBeGuessed);
     // Create Letters
-    var currentWord = "";
     var lettersGuess = 6;
     var wrongGuess= [];
-    var usersGuess= [];
     // create buttons for my letters
     for(let i = 65; i <= 90; i++) {
         // console.log(String.fromCharCode(i))
@@ -34,51 +32,58 @@ console.log(wordToBeGuessed);
 
     // let letterClickedOn = (("#keyboard") + (wordToBeGuessed)) 
     // console.log(letterClickedOn)
+    // console.log(phraseUnderscores)
 
     
-        // When user clicks button
-        $("#keyboard").click(function(evt){
-            evt.target.style.backgroundColor = "purple";
+    // When user clicks button
+    $("#keyboard").on("click", function(evt){
+        evt.target.style.backgroundColor = "purple";
         console.log(evt.target.innerHTML) 
+        var count = 0;
         // Compare letter clicked to current word to be guessed
-        console.log(wordToBeGuessed.indexOf('#keyboard'))
+        // console.log(wordToBeGuessed.indexOf('#keyboard'))
         // if letter clicked is in Wordtobeguessed       
         if(wordToBeGuessed.indexOf(evt.target.innerHTML) > -1) {
             // if (evt.getAttribute(`data-letter`) === wordToBeGuessed) {
            let letterBox = document.querySelectorAll('.letter-box')
            letterBox.forEach(letter => {
                // push to underscores
-               if (letter.getAttribute("data-letter") === evt.target.innerHTML) {
+               count ++
+               if (letter.getAttribute("data-letter") === evt.target.innerHTML){
                    letter.innerHTML = letter.getAttribute('data-letter')
-                   // if no more empty divs
-                   // alert "you win"
-               }
-           })
+                   //    console.log(count)
+                   if (count == wordToBeGuessed.length) {
+                                       
+                       setTimeout(function() {alert('you win')}, 100)
+                    }
+                    // if no more empty divs 
+                    
+                }                       
+            })
+            
             console.log(true);
         } else {
         console.log(false);
         var wrong = document.getElementById('incorrectGuess');
         
+        // push to incorrect
         wrongGuess.push(evt.target.innerHTML)
        
+        // else
         wrong.innerHTML = wrongGuess
         console.log(wrongGuess)
         var totalGuesses = document.getElementById('guesses');
         totalGuesses.innerHTML = lettersGuess;
         console.log(lettersGuess)
         }
+        // if amount incorrect === 6 
         if (wrongGuess.length === lettersGuess){
+            // alert "you lose"
             alert("you lose");
         }
+        
     })
-    for(let i = 0; i < wordToBeGuessed.length; i++){
-        // if wordToBeGuessed[i] === 
-    }
     // disable button
-    // else
-        // push to incorrect
-        // if amount incorrect === 6 
-            // alert "you lose"
     
     
     
