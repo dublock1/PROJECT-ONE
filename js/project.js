@@ -24,62 +24,62 @@ console.log(wordToBeGuessed);
         let div = $(`<div class="letter-box" data-letter="${wordToBeGuessed[i]}"></div>`);
         $('#underscores').append(div)
                
-}
-
+    }
+    
     let test = $(`[data-letter="${lettersGuess}"]`)
     test.text(lettersGuess)
-    console.log(lettersGuess)
+    // console.log(lettersGuess)
     
     // When user clicks button
     $("#keyboard").on("click", function(evt){
-        evt.target.style.backgroundColor = "purple";
-        $('#keyboard').attr("disabled");        
+        // evt.target.style.backgroundColor = "purple";
+           event.target.style.display = "none";            
+        
         console.log(evt.target.innerHTML) 
         var count = 0;
         // Compare letter clicked to current word to be guessed
-        $('#keyboard').removeAttr("disabled");
-
+        
+        
         // if letter clicked is in Wordtobeguessed       
-
+        
         if(wordToBeGuessed.indexOf(evt.target.innerHTML) > -1) {
-
             // if (evt.getAttribute(`data-letter`) === wordToBeGuessed) {
-
-           let letterBox = document.querySelectorAll('.letter-box')
-           letterBox.forEach(letter => {
-               // push to underscores
-               count ++
-               if (letter.getAttribute("data-letter") === evt.target.innerHTML){
-                   letter.innerHTML = letter.getAttribute('data-letter')
-                   //    console.log(count)
-                   if (count == wordToBeGuessed.length) {
-                       // if no more empty divs                                       
-                       setTimeout(function() {alert('you win')}, 100)
-                    }
-                    
-                }                       
-            })    
-            console.log(true);
-        } else {
-        console.log(false);
-        var wrong = document.getElementById('incorrectGuess');
-        
-        // push to incorrect
-        wrongGuess.push(evt.target.innerHTML)
-       
-        // else
-        wrong.innerHTML = wrongGuess
-        console.log(wrongGuess)
-        var totalGuesses = document.getElementById('guesses');
-        totalGuesses.innerHTML = lettersGuess;
-        console.log(lettersGuess)
-        }
-        // if amount incorrect === 6 
-        if (wrongGuess.length === lettersGuess){
-            // alert "you lose"
-            setTimeout(function() {alert("you lose")}, 100)
-        }
-        
+                
+                let letterBox = document.querySelectorAll('.letter-box')
+                letterBox.forEach(letter => {
+                    // push to underscores
+                    count ++
+                    if (letter.getAttribute("data-letter") === evt.target.innerHTML){
+                        letter.innerHTML = letter.getAttribute('data-letter')
+                        //    console.log(count)
+                        if (count == wordToBeGuessed.length) {
+                            // if no more empty divs                      
+                            setTimeout(function() {alert('you win')}, 100)
+                        }
+                        
+                    }                       
+                })    
+                console.log(true);
+            } else {
+                console.log(false);
+                var wrong = document.getElementById('incorrectGuess');
+                
+                // push to incorrect
+                wrongGuess.push(evt.target.innerHTML)
+                
+                // else
+                wrong.innerHTML = wrongGuess
+                console.log(wrongGuess)
+                var totalGuesses = document.getElementById('guesses');
+                totalGuesses.innerHTML = lettersGuess;
+                // console.log(lettersGuess)
+            }
+            // if amount incorrect === 6 
+            if (wrongGuess.length === lettersGuess){
+                // alert "you lose"
+                setTimeout(function() {alert("you lose")}, 100)
+            }
+            
     })
     // disable button
     
