@@ -7,6 +7,10 @@ header {
     text-align: center;
 }
 
+body {
+    background-color: purple;
+}
+
 h1 {
     font-family:'Righteous', cursive;
     font-weight: 800; 
@@ -18,16 +22,7 @@ h1 {
     margin: 25px 0;
 }
 
-.underscores {
-    border : 4px solid black;
-    height: 160px;
-    width: 50%;
-    margin: 50px auto;
-    text-align: center;
-    font-size: 100px;
-}
-
-.correctGuess {
+#incorrectGuess {
     border : 4px solid black;
     height: 160px;
     width: 50%;
@@ -36,13 +31,9 @@ h1 {
     font-size: 40px;
 }
 
-.incorrectGuess {
-    border : 4px solid black;
-    height: 160px;
-    width: 50%;
-    margin: 50px auto;
-    text-align: center;
-    font-size: 40px;
+#underscores {
+    display: flex;
+    justify-content: center;
 }
 
 .letter-box {
@@ -50,4 +41,9 @@ h1 {
     display: inline-block;
     width: 50px;
     margin: 10px;
+}
+
+#keyboard {
+    display: flex;
+    justify-content: center;
 }
