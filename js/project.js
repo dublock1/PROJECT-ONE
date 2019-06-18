@@ -16,7 +16,7 @@ console.log(wordToBeGuessed);
         var button = $('<button class="letters">' + (String.fromCharCode(i)) + "</button>");
         $('#keyboard').append(button)
     }
-    // make underscores that will be same length as my words hopefully
+    // make underscores that will be same length as my words
     
     var phraseUnderscores = wordToBeGuessed.length
     for(let i = 0; i < phraseUnderscores; i++) {
@@ -29,11 +29,6 @@ console.log(wordToBeGuessed);
     let test = $(`[data-letter="${lettersGuess}"]`)
     test.text(lettersGuess)
     console.log(lettersGuess)
-
-    // let letterClickedOn = (("#keyboard") + (wordToBeGuessed)) 
-    // console.log(letterClickedOn)
-    // console.log(phraseUnderscores)
-
     
     // When user clicks button
     $("#keyboard").on("click", function(evt){
@@ -41,10 +36,13 @@ console.log(wordToBeGuessed);
         console.log(evt.target.innerHTML) 
         var count = 0;
         // Compare letter clicked to current word to be guessed
-        // console.log(wordToBeGuessed.indexOf('#keyboard'))
+
         // if letter clicked is in Wordtobeguessed       
+
         if(wordToBeGuessed.indexOf(evt.target.innerHTML) > -1) {
+
             // if (evt.getAttribute(`data-letter`) === wordToBeGuessed) {
+
            let letterBox = document.querySelectorAll('.letter-box')
            letterBox.forEach(letter => {
                // push to underscores
@@ -53,14 +51,12 @@ console.log(wordToBeGuessed);
                    letter.innerHTML = letter.getAttribute('data-letter')
                    //    console.log(count)
                    if (count == wordToBeGuessed.length) {
-                                       
+                       // if no more empty divs                                       
                        setTimeout(function() {alert('you win')}, 100)
                     }
-                    // if no more empty divs 
                     
                 }                       
-            })
-            
+            })            
             console.log(true);
         } else {
         console.log(false);
@@ -79,7 +75,7 @@ console.log(wordToBeGuessed);
         // if amount incorrect === 6 
         if (wrongGuess.length === lettersGuess){
             // alert "you lose"
-            alert("you lose");
+            setTimeout(function() {alert("you lose")}, 100)
         }
         
     })
