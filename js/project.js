@@ -33,9 +33,11 @@ console.log(wordToBeGuessed);
     // When user clicks button
     $("#keyboard").on("click", function(evt){
         evt.target.style.backgroundColor = "purple";
+        $('#keyboard').attr("disabled");        
         console.log(evt.target.innerHTML) 
         var count = 0;
         // Compare letter clicked to current word to be guessed
+        $('#keyboard').removeAttr("disabled");
 
         // if letter clicked is in Wordtobeguessed       
 
@@ -56,7 +58,7 @@ console.log(wordToBeGuessed);
                     }
                     
                 }                       
-            })            
+            })    
             console.log(true);
         } else {
         console.log(false);
